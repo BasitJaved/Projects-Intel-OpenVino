@@ -48,14 +48,23 @@ Accuracy:				70% (no visible change in accuracy)
 ## Assess Model Use Cases
 
 1.	Retail: Retail is one of the best use cases of people counter app, it can be used to
+
 a)	Check the stocks of different product and alert the management if a product is running low in stock on display
+
 b)	It can be used to count the number of customers coming to store daily/weekly/monthly as well as during a specific time on any day or during certain event, if we combine it with facial detection we can use it to identify regular customers, times when they visit the store etc. and using this data management can decide how shopping experience can be improved for customers.
+
 c)	It can be used to track the buying behavior of customers, which product are they buying most? Is it easy to find those product? In case customers are buying multiple products, which 2 or 3 products are they buying together most and what will be impact on sales if we put these products together.
+
 d)	App along with facial recognition can be used to monitor attendance in office school, first entry in the morning can be logged as entry time while last entry on a specific date can be considered as leaving time for office and school.
+
 2.	Safety/Security: Safety and security is another field where this app has wide use cases
+
 a)	It can be used to monitor number of people coming in a certain building.
+
 b)	Together with facial recognition, it can be used to restrict the entry of employees from a certain building or room in an organization, it can be used to track movement of employees in sensitive rooms/buildings and restrict their entry after a certain period of time or after accessing for a certain number of times.
+
 c)	At home it can be used at the main gate to give access to family members only, it can be used to track children from going outside the main gate, it can be used to alert home owner and law enforcement in case there is an event of force entry when owner is not at home or during night when family is sleeping.
+
 d)	At my country there are a lot of cases of car/motorcycle theft so this app along with facial recognition can be used to alert owner and law enforcement in case someone tries to steal a car, there will be no problem if owner of family tries to enter the car, but if owner is not nearby and someone else tries to get into car the app will generate alert to owner and if car starts to move away alert will be generated to owner as well as law enforcement.
 
 ## Assess Effects on End User Needs
