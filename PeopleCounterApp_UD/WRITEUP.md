@@ -24,15 +24,24 @@ Any unsupported subgraph in model was replaced with a supported subgraph using -
 
 In terms of performance before and after conversion, size of model is reduced significantly, total inference time on whole video is also reduced more than half but accuracy remains same in both cases.
 
-#Before conversion
-Size					294 MB (all files)
-Inference time (complete video)		432.2 sec
-Accuracy				70% (no detection/bounding box on a number of frames)
+Before conversion:
 
-After conversion (IR)
-Size					95.5 MB (bin, xml)
-Inference time (complete video)		165.1 sec
-Accuracy				70% (no visible change in accuracy)
+Size of model: 294 MB (all files), 
+
+Inference time (on complete video): 432.2 sec, 
+
+Accuracy: 70% (no detection/bounding box on a number of frames)
+
+
+
+
+After conversion (IR):
+
+Size of model:					95.5 MB (bin, xml),
+
+Inference time (oncomplete video):		165.1 sec
+
+Accuracy:				70% (no visible change in accuracy)
 
 
 
