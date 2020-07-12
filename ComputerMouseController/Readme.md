@@ -12,23 +12,41 @@ pyautogui library.
 
 ## Directory Structure
 ---ComputerPointerController
+	
 	|---main.py
+	
 	|---mouse_controller.py
+	
 	|---face_detection.py
+	
 	|---facial_landmark_detection.py
+	
 	|---head_pose_estimation.py
+	
 	|---gaze_estimation.py
+	
 	|---demo.mp4
+	
 	|---README.md
+	
 	|---models
+			
 		|---face-detection-adas-binary-0001.bin
+			
 		|---face-detection-adas-binary-0001.xml
+		
 		|---landmarks-regression-retail-0009bin
+		
 		|---landmarks-regression-retail-0009.xml
+			
 		|---head-pose-estimation-adas-0001.bin
+			
 		|---head-pose-estimation-adas-0001.xml
+			
 		|---gaze-estimation-adas-0002.bin
+			
 		|---gaze-estimation-adas-0002.xml
+
 
 All the code files are in main directory and required models are downloaded in models directory inside main directory, for this projec we need four models from OpenVino 
 pre-trained models liberary, for simplicity only FP32 models are included here so if you want to try others you can download them from link mentioned below
