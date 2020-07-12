@@ -89,7 +89,7 @@ Model Documentations are available at
 
 Benchmark results obtained using Intel Core i7-9750H CPU
 
-# Model Loading Time:
+### Model Loading Time:
 
 Model Name	|	FP16 (sec.)	|	FP32 (sec.)	|	FP32-INT8 (sec.)
 ----------	|	-----------	|	----------	|	----------------
@@ -99,11 +99,11 @@ Facial Landmarks Detection	|	0.151	|	0.137	|	0.193
 Gaze Estimation		|0.188	|	0.164	|	0.232
 Total Time	|	0.732	|	0.681	|	0.831
 
-# Model Inference Time:
+### Model Inference Time:
 
 
 
-# FPS:
+### FPS:
 
 Model Name	|	FP16	|	FP32	|	FP32-INT8
 ----------	|	----	|	----	|	---------
