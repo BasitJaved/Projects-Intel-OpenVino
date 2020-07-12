@@ -1,4 +1,4 @@
-##Computer Pointer Controller
+## Computer Pointer Controller
 
 CPC is an AI app which is used to control mouse pointer. In this app mouse pointer is controlled using head position and movement of eyes. Four intel edge AI models 
 were used in creation of this app, and it was created using Intel OpenVino Toolkit. Input to this app can be a video file or live feed using webcam. The first model 
@@ -10,7 +10,7 @@ pyautogui library.
 
 
 
-Directory Structure
+## Directory Structure
 ---ComputerPointerController
 	|---main.py
 	|---mouse_controller.py
@@ -49,7 +49,7 @@ pre-trained models liberary, for simplicity only FP32 models are included here s
 	$ sudo apt install python-numpy
 
 
-Demo
+## Demo
 In order to run basic demo, you will need to run the command
 
 	$ python main.py -m1 models/face-detection-adas-binary-0001 -m2 models/landmarks-regression-retail-0009 -m3 models/head-pose-estimation-adas-0001 -m4 models/gaze-estimation-adas-0002 -i demo.avi
@@ -71,7 +71,7 @@ There are eight command line arguments for this program.
 10) -lmv 		LandmarksDetection visualization
 11) -hpv 	HeadPoseEstimation visualization
  
-Documentation
+## Documentation
 
 Model Documentations are available at 
 
@@ -85,10 +85,11 @@ Model Documentations are available at
 (https://docs.openvinotoolkit.org/latest/_models_intel_gaze_estimation_adas_0002_description_gaze_estimation_adas_0002.html)
 
 
-Benchmarks
+## Benchmarks
+
 Benchmark results obtained using Intel Core i7-9750H CPU
 
-Model Loading Time:
+# Model Loading Time:
 
 Model Name	|	FP16 (sec.)	|	FP32 (sec.)	|	FP32-INT8 (sec.)
 ----------	|	-----------	|	----------	|	----------------
@@ -98,9 +99,11 @@ Facial Landmarks Detection	|	0.151	|	0.137	|	0.193
 Gaze Estimation		|0.188	|	0.164	|	0.232
 Total Time	|	0.732	|	0.681	|	0.831
 
+# Model Inference Time:
 
 
-FPS:
+
+# FPS:
 
 Model Name	|	FP16	|	FP32	|	FP32-INT8
 ----------	|	----	|	----	|	---------
@@ -111,5 +114,5 @@ Gaze Estimation	|	793.88	|	791.32	|	1052.00
 
 
 
-Results
+## Results:
 From tables above it is clear that in my case FP32-INT8 is giving best results compared to FP32 and FP16, the total inference time for FP32-INT8 is lower than FP16 and FP32 while FPS are high.
