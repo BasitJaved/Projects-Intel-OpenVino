@@ -7,7 +7,7 @@ Estimation model), the second model detects the eyes on face and third model det
 last model (Gaze estimation model) which estimates the coordinates of where person is looking, these coordinates are used as input to move mouse pointer using 
 pyautogui library.
 
-
+![Project Flow](1.jpg)
 
 
 ## Directory Structure
@@ -101,7 +101,7 @@ Total Time	|	0.732	|	0.681	|	0.831
 
 ### Model Inference Time:
 
-
+![InferenceTime](2.jpg)
 
 ### FPS:
 
