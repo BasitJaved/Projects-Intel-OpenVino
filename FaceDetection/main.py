@@ -77,13 +77,11 @@ def infer_on_stream(args):
     #Handling the input stream
     if args.input == 'CAM':
         inputstream = 0 
-        video_mode = True
     elif args.input.endswith('jpg') or args.input.endswith('bmp') or args.input.endswith('png'):
         image_mode = True
         inputstream = args.input
     elif args.input.endswith('mp4') or args.input.endswith('flv') or args.input.endswith('avi'):
         inputstream = args.input
-        video_mode = True
     else:
         print('Input not supported')
     
@@ -94,6 +92,10 @@ def infer_on_stream(args):
     width = int(cap.get(3))
     height = int(cap.get(4))
 
+    
+    #output video
+    out = cv2.VideoWriter('output.mp4', 0x00000021, 24.0, (width,height))
+    
     
     #Looping until stream is over
     while cap.isOpened():
@@ -152,6 +154,8 @@ def infer_on_stream(args):
         #Writing an output image if single image was input
         if image_mode:
             cv2.imwrite('output_image.jpg', frame)
+        else:
+            out.write(frame)
     
 
     cap.release()
