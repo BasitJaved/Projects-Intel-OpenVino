@@ -26,6 +26,11 @@ Face Detection using Intel OpenVino Toolkit. The code is written in Python and i
       
       |---face-detection-retail-0005.xml
 
+All the code files are in main directory and required models are downloaded in models directory inside main directory, for this projec we need one model from OpenVino pre-trained models liberary.
+
+Face detection model, to detect face in video, download link
+https://docs.openvinotoolkit.org/2019_R2/_intel_models_face_detection_retail_0005_description_face_detection_retail_0005.html
+
 ## Demo
 
 python main.py --model face-detection-retail-0005.xml --input 1.jpg
