@@ -37,11 +37,11 @@ In order to run basic demo, you will need to run the command
 
 For image input 
 
-python main.py --model face-detection-retail-0005.xml --input 1.jpg
+$ python main.py --model face-detection-retail-0005.xml --input 1.jpg
 
 for Video/webcam input
 
-python main.py --model face-detection-retail-0005.xml --input vid1.mp4
+$ python main.py --model face-detection-retail-0005.xml --input vid1.mp4
 
 There are five command line arguments for this program.
 
