@@ -33,8 +33,27 @@ https://docs.openvinotoolkit.org/2019_R2/_intel_models_face_detection_retail_000
 
 ## Demo
 
+In order to run basic demo, you will need to run the command
+
+For image input 
+
 python main.py --model face-detection-retail-0005.xml --input 1.jpg
+
+for Video/webcam input
+
 python main.py --model face-detection-retail-0005.xml --input vid1.mp4
+
+There are five command line arguments for this program.
+
+-m Path to FaceDetection model
+
+-i Path to input image or video file or webcam feed (0)
+
+-l Path to CPU extension file (Not needed in new version of OpenVino toolkit)
+
+-d Specify the target device to infer on (CPU, GPU, VPU, FPGA)
+
+-pt Probability threshold for face detections filtering
 
 
 ## Output Video
