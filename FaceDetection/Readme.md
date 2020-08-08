@@ -2,6 +2,7 @@ Face Detection using Intel OpenVino Toolkit. The code is written in Python and i
 
 ## Directory Structure
 
+
   |---main.py
   
   |---Inference.py
@@ -17,10 +18,11 @@ Face Detection using Intel OpenVino Toolkit. The code is written in Python and i
   |---preview.jpg
   
   |---README.md
-
+  
   |---models
   
     |---face-detection-retail-0005.bin
+  
     |---face-detection-retail-0005.xml
 
 ## Demo
