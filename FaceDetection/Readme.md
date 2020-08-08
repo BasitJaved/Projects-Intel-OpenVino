@@ -1,4 +1,27 @@
-Face Detection using Intel OpenVino Toolkit
+Face Detection using Intel OpenVino Toolkit. The code is written in Python and it uses Intel's OpenVINO toolkit to perform inference on input (Video/image).
+
+## Directory Structure
+
+  |---main.py
+  
+  |---Inference.py
+  
+  |---vid8.mp4
+  
+  |---output.mp4
+  
+  |---1.jpg
+  
+  |---output_image.jpg
+  
+  |---preview.jpg
+  
+  |---README.md
+
+  |---models
+  
+    |---face-detection-retail-0005.bin
+    |---face-detection-retail-0005.xml
 
 ## Demo
 
