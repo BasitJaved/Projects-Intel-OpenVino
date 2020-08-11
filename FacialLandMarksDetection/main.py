@@ -52,55 +52,20 @@ def draw_boxes(frame, result, args, width, height):
             s_width = xmax - xmin
             s_height = ymax - ymin
                     
-    return s_width, s_height, crop_img
+    return s_width, s_height, crop_img, xmin, ymin
 
 #draw points for Facial Landmarks detection
-def draw_points(frame, outputs, w, h):
+def draw_points(frame, outputs, w, h, xmin, ymin):
     '''
     Draw bounding boxes onto the frame.
     
-    x1 = int(outputs[0][0] * w)
-    y1 = int(outputs[0][1] * h)
-    x2 = int(outputs[0][2] * w)
-    y2 = int(outputs[0][3] * h)
-    x3 = int(outputs[0][4] * w)
-    y3 = int(outputs[0][5] * h)
-    x4 = int(outputs[0][6] * w)
-    y4 = int(outputs[0][7] * h)
-    x5 = int(outputs[0][8] * w)
-    y5 = int(outputs[0][9] * h)
-    x6 = int(outputs[0][10] * w)
-    y6 = int(outputs[0][11] * h)
-    x7 = int(outputs[0][12] * w)
-    y7 = int(outputs[0][13] * h)
-    x8 = int(outputs[0][14] * w)
-    y8 = int(outputs[0][15] * h)
-    x9 = int(outputs[0][16] * w)
-    y9 = int(outputs[0][17] * h)
-    x10 = int(outputs[0][18] * w)
-    y10 = int(outputs[0][19] * h)
-    x11 = int(outputs[0][20] * w)
-    y11 = int(outputs[0][21] * h)
-    x12 = int(outputs[0][22] * w)
-    y12 = int(outputs[0][23] * h)
-    cv2.circle(frame, (x1, y1), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x2, y2), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x3, y3), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x4, y4), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x5, y5), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x6, y6), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x7, y7), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x8, y8), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x9, y9), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x10, y10), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x11, y11), 1, (0, 255, 0), 5)
-    cv2.circle(frame, (x12, y12), 1, (0, 255, 0), 5)
+    
 	'''
 
     for i in range(0, 70, 2):
-    	x = int(outputs[0][i] * w)
-    	y = int(outputs[0][i+1] * h)
-    	cv2.circle(frame, (x, y), 1, (0, 255, 0), 5)
+    	x = int(outputs[0][i] * w) +xmin
+    	y = int(outputs[0][i+1] * h) + ymin
+    	cv2.circle(frame, (x, y), 1, (0, 255, 0), 10)
                     
     return frame
 
@@ -184,7 +149,13 @@ def infer_on_stream(args):
 
             
             #Extracting face 
-            s_width, s_height, crop_image = draw_boxes(frame, result1, args, width, height)
+            s_width, s_height, crop_image, xmin, ymin = draw_boxes(frame, result1, args, width, height)
+
+
+            #if no face detected in video
+            if len(crop_image) == []:
+            	print('Face Not Detected')
+            	continue
 
 
             #Pre-processing the crop_image as needed
@@ -208,13 +179,13 @@ def infer_on_stream(args):
 
 
             	#drawing points on face
-            	frame= draw_points(crop_image, result2, s_width, s_height)
+            	frame= draw_points(frame, result2, s_width, s_height, xmin, ymin)
 
 
             #Extracting any desired stats from the results
             inf_time_message = "Inference time: {:.3f}ms".format(det_time * 1000)
             cv2.putText(frame, inf_time_message, (15, 15),
-                        cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 255, 0), 2)
+                        cv2.FONT_HERSHEY_TRIPLEX, 0.9, (0, 255, 0), 2)
 
 
 		
