@@ -65,4 +65,4 @@ There are five command line arguments for this program.
 
 Click the image below to view the output video
 
-[![Output Video](output_image.jpg)](https://https://youtu.be/BWSSmWYE8H0)
+[![Output Video](output_image.jpg)](https://youtu.be/BWSSmWYE8H0)
