@@ -10,7 +10,6 @@ from inference import Network
 import numpy as np
 
 
-
 def build_argparser():
     """
     Parse command line arguments.
@@ -35,7 +34,7 @@ def build_argparser():
     return parser
 
 
-# extracting width and height of face
+# Detect Face
 def draw_boxes(frame, result, args, width, height):
     '''
     Draw bounding boxes onto the frame.
@@ -47,25 +46,26 @@ def draw_boxes(frame, result, args, width, height):
             ymin = int(box[4] * height)
             xmax = int(box[5] * width)
             ymax = int(box[6] * height)
-            cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0,255,0), 3)
+            cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (0,250,0), 3)
             crop_img = frame[ymin:ymax, xmin:xmax]
             s_width = xmax - xmin
             s_height = ymax - ymin
                     
     return s_width, s_height, crop_img, xmin, ymin
 
+
 #draw points for Facial Landmarks detection
 def draw_points(frame, outputs, w, h, xmin, ymin):
     '''
     Draw bounding boxes onto the frame.
-    
-    
 	'''
 
     for i in range(0, 70, 2):
     	x = int(outputs[0][i] * w) +xmin
+    	#adding xmin so points can be plotted on original image/video instead of cropped version
     	y = int(outputs[0][i+1] * h) + ymin
-    	cv2.circle(frame, (x, y), 1, (0, 255, 0), 10)
+    	#adding ymin so points can be plotted on original image/video instead of cropped version
+    	cv2.circle(frame, (x, y), 1, (0, 250, 0), 20)
                     
     return frame
 
@@ -88,7 +88,7 @@ def infer_on_stream(args):
     prob_threshold = args.prob_threshold
 
 
-    #Loading the model
+    #Loading the model, first model for face detection second for landmarks detection
     n1, c1, h1, w1 = inference_network1.load_model(args.model1, args.device)
     n2, c2, h2, w2 = inference_network2.load_model(args.model2, args.device)
     
@@ -113,7 +113,11 @@ def infer_on_stream(args):
     width = int(cap.get(3))
     height = int(cap.get(4))
 
+
+    #Saving output video
     out = cv2.VideoWriter('output.mp4', 0x00000021, 24.0, (width,height))
+
+
     #Looping until stream is over
     while cap.isOpened():
 
@@ -130,13 +134,13 @@ def infer_on_stream(args):
         inf_start = time.time()
 
         
-        #Pre-processing the image as needed
+        #Pre-processing the image for face detection
         p_frame1 = cv2.resize(frame, (w1, h1))
         p_frame1 = p_frame1.transpose((2,0,1))
         p_frame1 = p_frame1.reshape(1, *p_frame1.shape)
 
         
-        #Starting asynchronous inference for specified request
+        #Starting asynchronous inference for face detection
         inference_network1.async_inference(p_frame1)
 
         
@@ -144,7 +148,7 @@ def infer_on_stream(args):
         if inference_network1.wait() == 0:
             
 
-            #Getting the results of the inference request
+            #Getting the results of the inference request for face detection
             result1 = inference_network1.extract_output()
 
             
@@ -158,13 +162,13 @@ def infer_on_stream(args):
             	continue
 
 
-            #Pre-processing the crop_image as needed
+            #Pre-processing the crop_image for facial landmarks detection
             p_frame2 = cv2.resize(crop_image, (w2, h2))
             p_frame2 = p_frame2.transpose((2,0,1))
             p_frame2 = p_frame2.reshape(1, *p_frame2.shape)
 
 
-            #Starting asynchronous inference for second network (facial landmark detection)
+            #Starting asynchronous inference for facial landmark detection
             inference_network2.async_inference(p_frame2)
 
 
@@ -184,11 +188,9 @@ def infer_on_stream(args):
 
             #Extracting any desired stats from the results
             inf_time_message = "Inference time: {:.3f}ms".format(det_time * 1000)
-            cv2.putText(frame, inf_time_message, (15, 15),
-                        cv2.FONT_HERSHEY_TRIPLEX, 0.9, (0, 255, 0), 2)
+            cv2.putText(frame, inf_time_message, (35, 35),
+                        cv2.FONT_HERSHEY_TRIPLEX, 1.5, (0, 250, 0), 2)
 
-
-		
         
         #Writing an output image if single image was input
         if image_mode:
